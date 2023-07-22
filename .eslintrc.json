@@ -1,0 +1,77 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "@react-native",
+    "standard-with-typescript",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-native/all",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "project": "./tsconfig.json"
+  },
+  "plugins": [
+    "react",
+    "react-hooks",
+    "react-native",
+    "prettier",
+    "@typescript-eslint",
+    "simple-import-sort"
+  ],
+  "rules": {
+    "react-native/no-unused-styles": "error",
+    "react-native/split-platform-components": "warn",
+    "react-native/no-inline-styles": "off",
+    "react-native/no-color-literals": "warn",
+    "react-native/sort-styles": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
+    "react-native/no-raw-text": "off",
+    "prettier/prettier": "error",
+    "@typescript-eslint/consistent-type-definitions": "off",
+    "@typescript-eslint/consistent-type-assertions": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "simple-import-sort/exports": "error"
+  },
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx", "*.ts", "*.tsx"],
+      "rules": {
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              ["^react", "expo", "^@storybook", "^@?\\w"],
+              ["^"],
+              ["^\\.\\."],
+              ["^\\."],
+              ["^\\u0000"],
+              ["^.+\\.?styles"]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.test.tsx"],
+      "rules": {
+        "@typescript-eslint/no-empty-function": "off"
+      }
+    }
+  ]
+}
