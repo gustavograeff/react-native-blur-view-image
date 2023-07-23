@@ -4,7 +4,7 @@ The project only aims to exemplify how to blur elements in a performant and crea
 
 If you require new features or bug fixes you can fork this project, but consider starring this repository and mention the credits.
 
-All the concept behind the logic is going to be explained soon in my [Medium profile](https://medium.com/@ggraeff).
+The idea/concept behind this implementation is explained in my [Medium profile](https://ggraeff.medium.com/a-creative-and-performant-way-of-blur-elements-views-in-react-native-ios-android-42e6aea98654).
 
 Some usage examples (heavy file can take seconds to load):
 
