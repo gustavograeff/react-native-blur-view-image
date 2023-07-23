@@ -1,5 +1,18 @@
 This is [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
+The project only aims to exemplify how to blur elements in a performant and creative way over images with bare React Native code.
+
+If you require new features or bug fixes you can fork this project, but consider starring this repository and mention the credits.
+
+All the concept behind the logic is going to be explained soon in my [Medium profile](https://medium.com/@ggraeff).
+
+Some usages examples:
+<video controls width="100%">
+
+  <source src="docs/usage-examples.mov" type="video/quicktime">
+  Your browser does not support the video tag.
+</video>
+
 # Getting Started
 
 > **Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
@@ -28,11 +41,5 @@ yarn android
 # iOS
 yarn ios
 ```
-
-## Supported React Native Versions
-
-This project only aims to exemplify how to blur elements in a performant and creative way over images with bare React Native code.
-
-If you require new features or bug fixes you can fork this project, but consider starring this repository and mention the credits.
 
 [Android performance test with Expo Go + Storybook](docs/AndroidPerformance.md)
