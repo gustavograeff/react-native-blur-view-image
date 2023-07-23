@@ -1,4 +1,4 @@
-# The performance tests below were done in an Expo Go repo with Storybook, the most performance spikes are related to open, and closing the app and the results are terrific. So stay tunned to the next round of tests in a bare React native repo.
+## The performance tests below were done in an Expo Go project with Storybook, the most performance spikes are related to opening, and closing the app and the results are terrific. So stay tuned to the next round of tests in a bare React native repo.
 
 ## **What are Mobile Performance Thresholds?**
 
