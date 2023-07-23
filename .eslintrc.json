@@ -34,7 +34,7 @@
     "react-native/no-unused-styles": "error",
     "react-native/split-platform-components": "warn",
     "react-native/no-inline-styles": "off",
-    "react-native/no-color-literals": "warn",
+    "react-native/no-color-literals": "off",
     "react-native/sort-styles": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
