@@ -6,7 +6,9 @@ If you require new features or bug fixes you can fork this project, but consider
 
 All the concept behind the logic is going to be explained soon in my [Medium profile](https://medium.com/@ggraeff).
 
-Some ![usage examples](docs/usage-examples.gif)
+Some usage examples:
+
+<img width="273" height="600" alt="image" src="docs/usage-examples.gif">
 
 # Getting Started
 
