@@ -4,7 +4,7 @@
 
 When you run a test with Apptim Desktop and generate a performance report of your app, you will see certain colors (red/yellow/green/gray) in each metrics captured by Apptim.
 
-![Apptim](Apptim.png)
+<img height="400" alt="Apptim.png" src="Apptim.png">
 
 In the main dashboard cards (top) and in the _Summary_ section, you see that each metric is evaluated against default thresholds set in Apptim, which are based on Google’s best practices (Android) and Apple’s best practices (iOS), along with other market benchmarks that consider device fragmentation. Each of these will have a color according to the result against after applying the thresholds. We call these thresholds _Low_, _Moderate_ or _Warning Limit_.
 
@@ -86,60 +86,57 @@ Check the tables below to see what the current **default thresholds** are for An
 
 ### _Multiple Blurred Elements story_
 
-![multiple-blurred-elements-story](multiple-blurred-elements-story.png)
+<img height="500" alt="multiple-blurred-elements-story" src="multiple-blurred-elements-story.png">
 
 Problems encountered (but possibly related to Storybook only):
 
 - When putting Expo Go in the background, there is a single spike of low rendering, but still within an acceptable range - with an average FPS values slightly above the recommended level.
 
-![expo-go-background](expo-go-background.png)
+<img height="400" alt="expo-go-background" src="expo-go-background.png">
 
 - When closing and reopening Expo Go, there is a spike in memory usage above the recommended level.
 
-  ![reopening-expo-go](reopening-expo-go.png)
+<img height="200" alt="reopening-expo-go.png" src="reopening-expo-go.png">
 
-  For this particular test, these are the total alert values when testing the Blur scenario on multiple pages:
+For this particular test, these are the total alert values when testing the Blur scenario on multiple pages:
 
-  - Avg. FPS 10 (recommended is 6)
-  - Avg. Memory Usage of 407.8 MB (recommended to be below 384 MB)
+- Avg. FPS 10 (recommended is 6)
+- Avg. Memory Usage of 407.8 MB (recommended to be below 384 MB)
 
-  ![multiple-pages-labels](multiple-pages-labels.png)
+<img height="120" alt="multiple-pages-labels" src="multiple-pages-labels.png">
 
-  ![multiple-pages-dashboard](multiple-pages-dashboard.png)
+<img height="400" alt="multiple-pages-dashboard" src="multiple-pages-dashboard.png">
 
-  ***
+---
 
-  ### “_Multiple Blurs in a Single Element” story_
+### “_Multiple Blurs in a Single Element” story_
 
-  ![multiple-blurs-in-a-single-element-story](multiple-blurs-in-a-single-element-story.png)
+<img height="500" alt="multiple-blurs-in-a-single-element-story" src="multiple-blurs-in-a-single-element-story.png">
 
-  Unlike the `MultipleBlurred Elements` Story, the `Multiple blurs in a single element` one registered a crash, which was invisible to the user.
+Unlike the `MultipleBlurred Elements` Story, the `Multiple blurs in a single element` one registered a crash, which was invisible to the user.
 
-  ![multiple-blurs-in-a-single-element-story-exception](multiple-blurs-in-a-single-element-story-exception.png)
+<img height="400" alt="multiple-blurs-in-a-single-element-story-exception" src="multiple-blurs-in-a-single-element-story-exception.png">
 
-  Spikes in Network, CPU, Memory, and Rendering were found when closing/reopening Storybook, with the rendering spike values in the summary being higher in the scenario of multiple blur points in the same image compared to having multiple images with a single blur point each.
+Spikes in Network, CPU, Memory, and Rendering were found when closing/reopening Storybook, with the rendering spike values in the summary being higher in the scenario of multiple blur points in the same image compared to having multiple images with a single blur point each.
 
-  ![multiple-blurs-in-a-single-element-story-cpu](multiple-blurs-in-a-single-element-story-cpu.png)
-
-  ![multiple-blurs-in-a-single-element-story-network](multiple-blurs-in-a-single-element-story-network.png)
-
-  ![multiple-blurs-in-a-single-element-story-memory](multiple-blurs-in-a-single-element-story-memory.png)
+<img height="400" alt="multiple-blurs-in-a-single-element-story-cpu" src="multiple-blurs-in-a-single-element-story-cpu.png">
+<img height="200" alt="multiple-blurs-in-a-single-element-story-network" src="multiple-blurs-in-a-single-element-story-network.png">
+<img height="250" alt="multiple-blurs-in-a-single-element-story-memory" src="multiple-blurs-in-a-single-element-story-memory.png">
 
 — Average FPS of 5.7, whereas in the `multiple image element` story the result was 2.2.
 
-![multiple-blurs-in-a-single-element-story-dashboard](multiple-blurs-in-a-single-element-story-dashboard.png)
+<img height="400" alt="multiple-blurs-in-a-single-element-story-dashboard" src="multiple-blurs-in-a-single-element-story-dashboard.png">
 
 ---
 
 ### “_Blur with children” story_
 
-![blur-with-children-story](blur-with-children-story.png)
+<img height="500" alt="blur-with-children-story" src="blur-with-children-story.png">
 
 This story didn't present any significant highlight in the analysis of individual graphics - the low rendering values were observed when closing/reopening the Storybook, which are not related to the component itself but to the platform being used for testing. That being said, there are no performance issues in this case.
 
-![blur-with-children-story-render](blur-with-children-story-render.png)
-
-![blur-with-children-story-dashboard](blur-with-children-story-dashboard.png)
+<img height="250" alt="blur-with-children-story-render" src="blur-with-children-story-render.png">
+<img height="250" alt="blur-with-children-story-dashboard" src="blur-with-children-story-dashboard.png">
 
 All points considered, none of the scenarios above has hindered the user experience with the Blur component on Android - the device temperature maintained its normal state, no lagging was observed nor was there a visible crash. The final recommendation, though, is to have a single blur element (ref. `Multiple blurred elements` or `Blur with children` stories*)* per image to avoid considerable spikes that can be interpreted as low-performance values.
 
