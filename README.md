@@ -8,7 +8,33 @@ All the concept behind the logic is going to be explained soon in my [Medium pro
 
 Some usage examples (heavy file can take seconds to load):
 
-<img width="273" height="600" alt="image" src="docs/usage-examples.gif">
+#### Only ImageBlurView will be blurred
+
+<img height="200" alt="usage-example-1" src="docs/usage-example-1.png">
+
+#### Full width blur
+
+<img height="400" alt="usage-example-2" src="docs/usage-example-2.png">
+
+#### Full height blur
+
+<img height="300" alt="usage-example-3" src="docs/usage-example-3.png">
+
+#### Full width / height blur
+
+<img height="300" alt="usage-example-4" src="docs/usage-example-4.png">
+
+#### Multiple ImageBlurView
+
+<img height="200" alt="usage-example-5" src="docs/usage-example-5.png">
+
+#### Multiple blur shapes
+
+<img height="400" alt="usage-example-6" src="docs/usage-example-6.png">
+
+#### Custom blur props (blurRadius and overlay)
+
+<img height="400" alt="usage-example-7" src="docs/usage-example-7.png">
 
 # Getting Started
 
