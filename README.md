@@ -6,12 +6,7 @@ If you require new features or bug fixes you can fork this project, but consider
 
 All the concept behind the logic is going to be explained soon in my [Medium profile](https://medium.com/@ggraeff).
 
-Some usages examples:
-<video controls width="100%">
-
-  <source src="docs/usage-examples.mov" type="video/quicktime">
-  Your browser does not support the video tag.
-</video>
+Some ![usage examples](docs/usage-examples.gif)
 
 # Getting Started
 
