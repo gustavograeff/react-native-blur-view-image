@@ -59,6 +59,7 @@ const ImageBlurShape = ({
   containerRef,
   image,
   position,
+  resizeMode,
 }: ImageBlurShapeProps): JSX.Element => {
   const { getRefList, getContainerProps } = useImageBlur();
 
@@ -107,7 +108,7 @@ const ImageBlurShape = ({
             },
             rect && { top: -rect.y, left: -rect.x },
           ]}
-          resizeMode="contain"
+          resizeMode={resizeMode}
           blurRadius={
             blurRadius === 0
               ? 0
