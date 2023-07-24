@@ -1,6 +1,6 @@
 This is [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
-The project only aims to exemplify how to blur elements in a performant and creative way over images with bare React Native code.
+The project only aims to exemplify how to blur elements in a performant and creative way over images with bare React Native code. (some code updates coming soon)
 
 If you require new features or bug fixes you can fork this project, but consider starring this repository and mention the credits.
 
