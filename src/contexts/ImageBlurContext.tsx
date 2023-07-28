@@ -8,7 +8,7 @@ import React, {
 } from 'react';
 import { type View } from 'react-native';
 
-import { type ImageBlurViewContainerProps } from '../components/ImageBlur';
+import { type ImageBlurEffectProps } from '../components/ImageBlur/ImageBlurView';
 
 type ImageBlurContextProps = {
   children: ReactNode;
@@ -18,8 +18,8 @@ export type ImageBlurElement = View | null;
 export type ImageBlurElementRef = MutableRefObject<ImageBlurElement>;
 
 type ImageBlurContextType = {
-  pushContainerProps: (props: ImageBlurViewContainerProps | undefined) => void;
-  getContainerProps: (index: number) => ImageBlurViewContainerProps | undefined;
+  setBlurProps: (props: ImageBlurEffectProps | undefined) => void;
+  getBlurProps: () => ImageBlurEffectProps | undefined;
   pushRef: (ref: ImageBlurElementRef) => void;
   getRefList: () => ImageBlurElementRef[] | null;
 };
@@ -35,9 +35,7 @@ export const ImageBlurProvider = ({
     ImageBlurElementRef[] | null
   >(null);
 
-  const containerPropList = useRef<Array<
-    ImageBlurViewContainerProps | undefined
-  > | null>(null);
+  const blurProps = useRef<ImageBlurEffectProps | undefined>(undefined);
 
   const pushRef = useCallback((ref: ImageBlurElementRef) => {
     setBlurElementRefList(prev => (prev ? [...prev, ref] : [ref]));
@@ -47,24 +45,22 @@ export const ImageBlurProvider = ({
     return blurElementRefList;
   }, [blurElementRefList]);
 
-  const pushContainerProps = useCallback(
-    (props: ImageBlurViewContainerProps | undefined) => {
-      if (!containerPropList.current) containerPropList.current = [];
-
-      containerPropList.current = [...containerPropList.current, props];
+  const setBlurProps = useCallback(
+    (props: ImageBlurEffectProps | undefined) => {
+      blurProps.current = props;
     },
     [],
   );
 
-  const getContainerProps = useCallback((index: number) => {
-    return containerPropList.current?.[index];
+  const getBlurProps = useCallback(() => {
+    return blurProps.current;
   }, []);
 
   return (
     <ImageBlurContext.Provider
       value={{
-        getContainerProps,
-        pushContainerProps,
+        setBlurProps,
+        getBlurProps,
         getRefList,
         pushRef,
       }}

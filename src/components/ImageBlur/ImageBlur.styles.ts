@@ -13,6 +13,12 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   hide: { opacity: 0 },
+  inset: {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  },
 });
 
 export default styles;

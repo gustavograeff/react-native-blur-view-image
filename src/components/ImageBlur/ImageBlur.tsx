@@ -17,8 +17,8 @@ type ImageBlurContainerSize = {
 export type ImageBlurRadius = number;
 
 export type ImageBlurProps = {
-  aspectRatio: AspectRatio | number;
-  blurShapes: Array<Pick<ImageBlurShapeProps, 'children' | 'position'>>;
+  aspectRatio: AspectRatio;
+  blurChildren: ImageBlurShapeProps['children'];
   children?: React.ReactNode;
   resizeMode?: ImageBlurShapeProps['resizeMode'];
   src: string;
@@ -26,7 +26,7 @@ export type ImageBlurProps = {
 
 const ImageBlur = ({
   aspectRatio,
-  blurShapes,
+  blurChildren,
   children,
   resizeMode = 'contain',
   src,
@@ -63,29 +63,24 @@ const ImageBlur = ({
       />
       {children}
 
-      {blurShapes.length > 0 && (
+      {containerSize.height && containerSize.width && (
         <View
           ref={containerRef}
           style={[styles.sticked, styles.fitAvailableSpace]}
         >
-          {blurShapes.map((blurShape, index) =>
-            !containerSize.height || !containerSize.width ? null : (
-              <ImageBlurProvider key={index}>
-                <ImageBlurShape
-                  containerRef={containerRef}
-                  image={{
-                    height: containerSize.height,
-                    src,
-                    width: containerSize.width,
-                  }}
-                  position={blurShape.position}
-                  resizeMode={resizeMode}
-                >
-                  {blurShape.children}
-                </ImageBlurShape>
-              </ImageBlurProvider>
-            ),
-          )}
+          <ImageBlurProvider>
+            <ImageBlurShape
+              containerRef={containerRef}
+              image={{
+                height: containerSize.height,
+                src,
+                width: containerSize.width,
+              }}
+              resizeMode={resizeMode}
+            >
+              {blurChildren}
+            </ImageBlurShape>
+          </ImageBlurProvider>
         </View>
       )}
     </View>

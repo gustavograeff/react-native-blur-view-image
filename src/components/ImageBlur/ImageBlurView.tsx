@@ -10,23 +10,23 @@ import {
   type BlurShapeOverlay,
 } from './ImageBlurShape';
 
-export type ImageBlurViewContainerProps = {
+export type ImageBlurEffectProps = {
   blurRadius?: ImageBlurRadius;
   overlay?: BlurShapeOverlay;
   style?: BlurShapeContainerStyle;
 };
 
 export type ImageBlurViewProps = Omit<ViewProps, 'ref'> & {
-  containerProps?: ImageBlurViewContainerProps;
+  blurProps?: ImageBlurEffectProps;
 };
 
 const ImageBlurView = ({
   children,
-  containerProps,
+  blurProps,
   style,
   ...rest
 }: ImageBlurViewProps) => {
-  const { pushRef, pushContainerProps } = useImageBlur();
+  const { pushRef, setBlurProps } = useImageBlur();
 
   const viewRef = useRef<ImageBlurElement>(null);
 
@@ -36,9 +36,9 @@ const ImageBlurView = ({
     if (mounted) return;
 
     setMounted(true);
-    pushContainerProps(containerProps);
+    setBlurProps(blurProps);
     pushRef(viewRef);
-  }, [containerProps, mounted, pushContainerProps, pushRef]);
+  }, [blurProps, mounted, setBlurProps, pushRef]);
 
   return (
     <View ref={viewRef} style={style} {...rest}>
@@ -46,5 +46,4 @@ const ImageBlurView = ({
     </View>
   );
 };
-
 export default ImageBlurView;

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import {
   Image,
   type ImageResizeMode,
@@ -13,13 +13,6 @@ import useImageBlur from '../../hooks/useImageBlur';
 import { getImageSource } from '../../utils/image';
 
 import styles from './ImageBlur.styles';
-
-type BlurShapePosition = {
-  bottom?: number | `${number}%`;
-  left?: number | `${number}%`;
-  right?: number | `${number}%`;
-  top?: number | `${number}%`;
-};
 
 type BlurShapeImage = {
   height: number;
@@ -48,7 +41,6 @@ export type ImageBlurShapeProps = {
   children: React.ReactNode;
   containerRef: React.MutableRefObject<View | null>;
   image: BlurShapeImage;
-  position: BlurShapePosition;
   resizeMode: ImageResizeMode;
 };
 
@@ -58,36 +50,31 @@ const ImageBlurShape = ({
   children,
   containerRef,
   image,
-  position,
   resizeMode,
 }: ImageBlurShapeProps): JSX.Element => {
-  const { getRefList, getContainerProps } = useImageBlur();
+  const { getRefList, getBlurProps } = useImageBlur();
 
   const [childrenRect, setChildrenRect] = useState<LayoutRectangle[] | null>(
     null,
   );
 
   const blurredElements = getRefList();
-  const childrenMounted =
-    blurredElements &&
+  const showBlur =
     childrenRect &&
-    childrenRect.length === blurredElements.length &&
-    childrenRect[0]?.width !== undefined &&
-    childrenRect[0]?.height !== undefined &&
-    (childrenRect[0]?.x !== undefined || childrenRect[0]?.y !== undefined);
-  const showBlur = blurredElements === null || childrenMounted;
+    blurredElements &&
+    childrenRect.length === blurredElements.length;
 
   const getBlurShape = (rect: LayoutRectangle | undefined, index: number) => {
-    const containerProps = getContainerProps(index);
+    const blurProps = getBlurProps();
     const blurRadius =
-      containerProps?.blurRadius === undefined ? 16 : containerProps.blurRadius;
+      blurProps?.blurRadius === undefined ? 16 : blurProps.blurRadius;
 
     return (
       <View
         aria-hidden={!showBlur}
         key={index}
         style={[
-          containerProps?.style,
+          blurProps?.style,
           styles.blurShapeContainer,
           styles.sticked,
           !showBlur && styles.hide,
@@ -122,9 +109,8 @@ const ImageBlurShape = ({
             styles.sticked,
             styles.fitAvailableSpace,
             {
-              opacity: containerProps?.overlay?.opacity ?? 0.2,
-              backgroundColor:
-                containerProps?.overlay?.backgroundColor ?? '#000000',
+              opacity: blurProps?.overlay?.opacity ?? 0.2,
+              backgroundColor: blurProps?.overlay?.backgroundColor ?? '#000000',
             },
             !showBlur && styles.hide,
           ]}
@@ -157,6 +143,10 @@ const ImageBlurShape = ({
     });
   }, [blurredElements, containerRef]);
 
+  useEffect(() => {
+    calculateShapePosition();
+  }, [calculateShapePosition, children]);
+
   return (
     <>
       {childrenRect?.map((rect, index) => {
@@ -165,8 +155,10 @@ const ImageBlurShape = ({
 
       <View
         aria-hidden={!showBlur}
-        style={[styles.sticked, !showBlur && styles.hide, position]}
-        onLayout={calculateShapePosition}
+        style={[styles.sticked, styles.inset]}
+        onLayout={() => {
+          calculateShapePosition();
+        }}
       >
         {children}
       </View>
